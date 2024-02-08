@@ -25,7 +25,7 @@ $logged_in = false;
                 <a class="nav-link" href="\Szakdolgozat\index.php">Menü</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="\Szakdolgozat\view\register.php">Regisztráció/Bejelentkezés</a>
+                <a class="nav-link" href="\Szakdolgozat\view\login.php">Bejelentkezés/Regisztráció</a>
             </li>
             <?php if ($logged_in) : ?>
                 <!-- Ha bejelentkezett a felhasználó -->
