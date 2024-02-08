@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/Szakdolgozat/css/login.css" rel="stylesheet">
-    <title>Regisztráció</title>
+    <title>Bejelentkezés</title>
 </head>
 <body>
     <div class="container">
@@ -20,7 +20,7 @@
                     <input type="text" name="password" id="password" required>
                 </div>
                 <div class="field">
-                    <input type="submit" name="submit" value="Bejelentkezés" required>
+                    <input type="submit" class="btn" name="submit" value="Bejelentkezés" required>
                 </div>
                 <div class="links">
                     Nincs még fiókod? <a href="register.html">Regisztrálás</a>
