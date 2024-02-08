@@ -16,7 +16,7 @@ $logged_in = false;
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Menü</a>
+    <a class="navbar-brand">Menü</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@ $logged_in = false;
                 <a class="nav-link" href="view\menu.php">Étlap</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="\Szakdolgozat\view\register.php">Regisztráció/Bejelentkezés</a>
+                <a class="nav-link" href="\Szakdolgozat\view\login.php">Bejelentkezés/Regisztráció</a>
             </li>
             <?php if ($logged_in) : ?>
                 <!-- Ha bejelentkezett a felhasználó -->
