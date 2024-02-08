@@ -6,7 +6,7 @@
 }
 
 body{
-    background: #e4e9f7;
+    background: #8f6c3e;
 }
 
 .container{
@@ -34,6 +34,7 @@ body{
 .form-box header{
     font-size: 25px;
     font-weight: 600;
+    text-align: center;
     padding-bottom: 10px;
     border-bottom: 1px solid #e6e6e6;
     margin-bottom: 10px;
@@ -57,7 +58,7 @@ body{
 
 .btn{
     height: 35px;
-    background: rgb(76,68,182,0.808);
+    background: #8f6c3e;
     border: 0;
     border-radius: 5px;
     color: #fff;
