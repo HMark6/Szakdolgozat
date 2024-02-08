@@ -22,11 +22,12 @@ body{
     flex-direction: column;
     padding: 25px 25px;
     border-radius: 20px;
-    box-shadow: 0 0 128px 0 rgb(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);
+    box-shadow: 0 0 128px 0 rgb(0,0,0,0.1),
+                0 32px 64px -48px rgb(0,0,0,0.5);
 }
 
 .form-box{
-    width: 25px;
+    width: 450px;
     margin: 0px 10px;
 }
 
