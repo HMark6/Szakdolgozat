@@ -24,7 +24,7 @@ $logged_in = false;
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Étlap</a>
+                <a class="nav-link" href="view\menu.php">Étlap</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Regisztráció/Bejelentkezés</a>
