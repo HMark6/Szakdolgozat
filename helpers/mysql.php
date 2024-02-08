@@ -15,7 +15,7 @@ class DataBase {
   
       // Check connection
       if (self::$conn->connect_error) {
-        die("Connection failed: " . $this->conn->connect_error);
+        die("Connection failed: " . self::$conn->connect_error);
       }
       
       self::$conn->set_charset("utf8");
