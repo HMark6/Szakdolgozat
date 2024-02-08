@@ -23,7 +23,7 @@
                     <input type="submit" class="btn" name="submit" value="Bejelentkezés" required>
                 </div>
                 <div class="links">
-                    Nincs még fiókod? <a href="register.html">Regisztrálás</a>
+                    Nincs még fiókod? <a href="\Szakdolgozat\view\register.php">Regisztrálás</a>
                 </div>
             </form>
         </div>
