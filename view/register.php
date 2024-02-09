@@ -9,30 +9,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     // Felhasználó által megadott adatok
     $lastname = $_POST['vezetekNev'];
     $firstname = $_POST['keresztNev'];
-    $city = $_POST['telepules'];
+    $zipcode = $_POST['iranyitoszam'];
     $phone = $_POST['telefonSzam'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // SQL lekérdezés a felhasználó létezésének ellenőrzésére
-    $sql = "SELECT * FROM users WHERE email='$email'";
-    $result = DataBase::$conn->query($sql);
+    // SQL lekérdezés a településnév lekérdezésére az irányítószám alapján
+    $sql = "SELECT telepules FROM iranyitoszam WHERE iranyitoszam='$zipcode'";
+    $result = $db->conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Ha már létezik a felhasználó
-        echo "A megadott e-mail cím már foglalt.";
-    } else {
-        // Ha még nem létezik, hozzáadja az adatbázishoz
+        $row = $result->fetch_assoc();
+        $city = $row['telepules'];
 
-        $sql= "INSERT INTO `profil`(`vezeteknev`, `keresztnev`, `telepules_ID`, `telefonszam`, `email`, `jelszo`) VALUES ('[vezetekNev]','[keresztNev]','[telepules]','[telefonSzam]','[email]','[password]')";
-        if (DataBase::$conn->query($sql) === TRUE) {
+        // Ha még nem létezik, hozzáadja az adatbázishoz
+        $sql= "INSERT INTO `profil`(`vezeteknev`, `keresztnev`, `telepules`, `telefonszam`, `email`, `jelszo`) VALUES ('$lastname','$firstname','$city','$phone','$email','$password')";
+       
+        if ($db->conn->query($sql) === TRUE) {
             echo "Sikeres regisztráció!";
         } else {
-            echo "Hiba a regisztráció során: " . DataBase::$conn->error;
+            echo "Hiba a regisztráció során: " . $db->conn->error;
         }
+    } else {
+        echo "Nem található település az adatbázisban az irányítószám alapján.";
     }
 }
 ?>
+
+
 
 
 

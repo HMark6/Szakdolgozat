@@ -4,7 +4,7 @@ class DataBase {
 
   private $servername = "localhost";
   private $username = "admin";
-  private $password = "Lo83]lDv.g9-OlF";
+  private $password = "Lo83]lDv.g9-OlFK";
   private $db = "Szakdolgozat";
   public static $conn;
 
@@ -15,7 +15,7 @@ class DataBase {
   
       // Check connection
       if (self::$conn->connect_error) {
-        die("Connection failed: " . self::$conn->connect_error);
+        die("Connection failed: " . $this->conn->connect_error);
       }
       
       self::$conn->set_charset("utf8");
