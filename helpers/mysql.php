@@ -1,28 +1,24 @@
 <?php
 
 class DataBase {
+  private static $servername = "localhost";
+  private static $username = "admin";
+  private static $password = "Lo83]lDv.g9-OlFK";
+  private static $db = "Szakdolgozat";
 
-  private $servername = "localhost";
-  private $username = "admin";
-  private $password = "Lo83]lDv.g9-OlFK";
-  private $db = "Szakdolgozat";
-  public static $conn;
+  public static function getConnection() {
+      $conn = new mysqli(self::$servername, self::$username, self::$password, self::$db);
 
-  function __construct()
-  {
-      // Create connection
-      self::$conn = new mysqli($this->servername, $this->username, $this->password, $this->db);
-  
-      // Check connection
-      if (self::$conn->connect_error) {
-        die("Connection failed: " . $this->conn->connect_error);
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
       }
-      
-      self::$conn->set_charset("utf8");
-  }
 
+      $conn->set_charset("utf8");
+
+      return $conn;
+  }
 }
 
 
 
-?> 
+?>
