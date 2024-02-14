@@ -10,7 +10,9 @@
 <body>
 
 <?php
-$logged_in = false;
+session_start();
+
+$logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,18 +26,28 @@ $logged_in = false;
             <li class="nav-item">
                 <a class="nav-link" href="\Szakdolgozat\index.php">Menü</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="\Szakdolgozat\view\login.php">Bejelentkezés/Regisztráció</a>
-            </li>
             <?php if ($logged_in) : ?>
                 <!-- Ha bejelentkezett a felhasználó -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profil</a>
+                <a class="nav-link" href="user_dashboard.php">Profil</a>
+                </li>
+            <?php endif; ?>
+            <!-- Ha a felhasználó be van jelentkezve, akkor a Kijelentkezés link jelenjen meg -->
+            <?php if ($logged_in) : ?>
+                <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Kijelentkezés</a>
+                </li>
+            <?php else: ?>
+                <!-- Ha a felhasználó nincs bejelentkezve, akkor megjelenítjük a Bejelentkezés/Regisztráció lehetőséget -->
+                <li class="nav-item">
+                    <a class="nav-link" href="\Szakdolgozat\view\login.php">Bejelentkezés/Regisztráció</a>
                 </li>
             <?php endif; ?>
         </ul>
     </div>
 </nav>
+
 
 <div class="container mt-5">
     <h1 class="text-center">Étlap</h1>
