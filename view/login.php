@@ -1,3 +1,35 @@
+<?php
+session_start(); // Session kezelésének indítása
+require('../helpers/mysql.php'); // Adatbázis kapcsolat létesítése
+$conn = DataBase::getConnection();
+$message = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Ellenőrizze az e-mail cím és a jelszó egyezését az adatbázisban
+    $sql = "SELECT * FROM `profil` WHERE `email`='$email' AND `jelszo`='$password'";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        // Sikeres bejelentkezés
+        $row = $result->fetch_assoc();
+        $_SESSION['user_id'] = $row['profil_ID'];
+        $_SESSION['email'] = $row['email'];
+        // További műveletek, például átirányítás a felhasználó saját oldalára
+        header("Location: user_dashboard.php"); // Cserélje ki erre az oldalra, amely a felhasználó vezérlőpultja
+        exit();
+    } else {
+        // Sikertelen bejelentkezés
+        $message = "Hibás e-mail cím vagy jelszó.";
+    }
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -13,11 +45,11 @@
             <form action="" method="post">
                 <div class="field input">
                     <label for="email">E-mail</label>
-                    <input type="text" name="email" id="email" required>
+                    <input type="email" name="email" id="email" required>
                 </div>
                 <div class="field input">
                     <label for="password">Jelszó</label>
-                    <input type="text" name="password" id="password" required>
+                    <input type="password" name="password" id="password" required>
                 </div>
                 <div class="field">
                     <input type="submit" class="btn" name="submit" value="Bejelentkezés" required>
@@ -25,9 +57,14 @@
                 <div class="links">
                     Nincs még fiókod? <a href="\Szakdolgozat\view\register.php">Regisztrálás</a>
                 </div>
+                    <?php if (!empty($message)) : ?>
+                        <div class="error-message"><?php echo $message; ?></div>
+                    <?php endif; ?> 
             </form>
         </div>
+        
     </div>
+    
 </body>
 </html>
 
