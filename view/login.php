@@ -8,6 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+
+    // Ellenőrizze az e-mail cím és a jelszó mezők kitöltöttségét
+    if (empty($email) || empty($password)) {
+        $message = "Kérem, töltse ki mindkét mezőt.";
+
+    }else{
     // Ellenőrizze az e-mail cím és a jelszó egyezését az adatbázisban
     $sql = "SELECT * FROM `profil` WHERE `email`='$email' AND `jelszo`='$password'";
     $result = $conn->query($sql);
@@ -18,11 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $_SESSION['user_id'] = $row['profil_ID'];
         $_SESSION['email'] = $row['email'];
         // További műveletek, például átirányítás a felhasználó saját oldalára
-        header("Location: user_dashboard.php"); // Cserélje ki erre az oldalra, amely a felhasználó vezérlőpultja
+        header("Location: ../index.php"); // Cserélje ki erre az oldalra, amely a felhasználó vezérlőpultja
         exit();
     } else {
         // Sikertelen bejelentkezés
         $message = "Hibás e-mail cím vagy jelszó.";
+    }
     }
 }
 ?>
