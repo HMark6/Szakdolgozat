@@ -46,30 +46,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <title>Bejelentkezés</title>
 </head>
 <body>
+    
     <div class="container">
-        <div class="box form-box">
-            <header>Bejelentkezés</header>
-            <form action="" method="post">
-                <div class="field input">
+        <form action="" class="form" method="post">
+
+            <h2>Bejelentkezés</h2>
+                
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" required>
-                </div>
-                <div class="field input">
+                    <input type="email" name="email" class="box" id="email" required>
+                
+                
                     <label for="password">Jelszó</label>
-                    <input type="password" name="password" id="password" required>
-                </div>
-                <div class="field">
-                    <input type="submit" class="btn" name="submit" value="Bejelentkezés" required>
-                </div>
-                <div class="links">
-                    Nincs még fiókod? <a href="\Szakdolgozat\view\register.php">Regisztrálás</a>
-                </div>
+                    <input type="password" name="password" class="box" id="password" required>
+                
+                
+                    <input type="submit" class="btn" id="submit" name="submit" value="Bejelentkezés" required>
+
+                    <a href="\Szakdolgozat\view\register.php">Nincs még fiókod?</a>
+
                     <?php if (!empty($message)) : ?>
                         <div class="error-message"><?php echo $message; ?></div>
-                    <?php endif; ?> 
-            </form>
+                    <?php endif; ?>
+        </form>
+
+        <div class="side">
+            <img src="/Szakdolgozat/picture/school_canteen.jpg" alt="school canteen">
         </div>
-        
     </div>
     
 </body>
