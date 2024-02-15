@@ -80,30 +80,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Szakdolgozat/css/login.css" rel="stylesheet">
+    <link href="/Szakdolgozat/css/register.css" rel="stylesheet">
     <title>Regisztráció</title>
 </head>
 <body>
-    <div class="container">
-        <div class="box form-box">
-            <header>Regisztrálás</header>
-            
-            <form action="" method="post">
 
+<div class="container">
+        <form action="" class="form" method="post">
 
-
-                <div class="field input">
+            <h2>Regisztráció</h2>
+                
                     <label for="vezetekNev">Vezetéknév</label>
-                    <input type="text" name="vezetekNev" id="vezetekNev" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+" title="Csak betűket tartalmazhat" required>
-                </div>
-                <div class="field input">
-                    <label for="keresztNev">Keresztnév</label>
-                    <input type="text" name="keresztNev" id="keresztNev" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+" title="Csak betűket tartalmazhat" required>
-                </div>
+                    <input type="text" name="vezetekNev" id="vezetekNev" class="box"  pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+" title="Csak betűket tartalmazhat" required>
 
-                <div class="field input">
+                    <label for="keresztNev">Keresztnév</label>
+                    <input type="text" name="keresztNev" id="keresztNev" class="box" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+" title="Csak betűket tartalmazhat" required>
+                
+                
                     <label for="telepules">Település</label>
-                    <select name="telepules" id="telepules" required>
+                    <select name="telepules" id="telepules" class="box" required>
                         <option value="">Válasszon települést...</option>
                         <?php
                         // Irányítószámok táblából lekérdezés
@@ -117,32 +112,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         }
                         ?>
                     </select>
-                </div>
-                
-                <div class="field input">
+
                     <label for="telefonSzam">Telefonszám</label>
-                    <input type="tel" name="telefonSzam" id="telefonSzam" placeholder="20 415 9720" pattern="[0-9]{2} [0-9]{3} [0-9]{4}" required>
-                </div>
-                <div class="field input">
+                    <input type="tel" name="telefonSzam" id="telefonSzam" class="box" placeholder="20 415 9720" pattern="[0-9]{2} [0-9]{3} [0-9]{4}" required>
+
                     <label for="email">E-mail cím</label>
-                    <input type="email" name="email" id="email" required>
+                    <input type="email" name="email" id="email" class="box" required>
                     <div id="emailError" class="error-message"></div>
-                </div>
-                <div class="field input">
+
                     <label for="password">Jelszó</label>
-                    <input type="password" name="password" id="password" required>
-                </div>
-                <div class="field">
-                    <input type="submit" class="btn" name="submit" value="Regisztrálás" required>
-                </div>
-                <div class="links">
-                    Van már fiókod? <a href="\Szakdolgozat\view\login.php">Bejelentkezés</a>
-                </div>
-                <?php if (!empty($message)) : ?>
+                    <input type="password" name="password" id="password" class="box" required>
+                
+                
+                    <input type="submit" class="btn" id="submit" name="submit" value="Regsiztrálás" required>
+
+                    <a href="\Szakdolgozat\view\login.php">Van már fiókod?</a>
+
+                    <?php if (!empty($message)) : ?>
                 <div class="error-message"><?php echo $message; ?></div>
             <?php endif; ?>
-            </form>
+
+        </form>
+
+        <div class="side">
+            <img src="/Szakdolgozat/picture/school_canteen.jpg" alt="school canteen">
         </div>
     </div>
+
 </body>
 </html>
