@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #d2b48c !important; 
+    background-color: rgb(22, 113, 140) !important; 
 }
 
 .navbar-brand,
@@ -21,7 +21,7 @@
 
 
 body {
-    background-color: #d2b48c; 
+    background-color: whitesmoke; 
     color: #000000; 
 }
 
