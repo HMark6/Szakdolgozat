@@ -38,7 +38,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
             <?php if ($logged_in) : ?>
                 <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Kijelentkezés</a>
+                    <a class="nav-link" href="/Szakdolgozat/view/logout.php">Kijelentkezés</a>
                 </li>
             <?php else: ?>
                 <!-- Ha a felhasználó nincs bejelentkezve, akkor megjelenítjük a Bejelentkezés/Regisztráció lehetőséget -->
