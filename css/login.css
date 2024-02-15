@@ -1,83 +1,80 @@
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
 body{
-    background: #8f6c3e;
+    background-color: rgb(22, 113, 140);
 }
 
 .container{
     display: flex;
+    height: 500px;
+    width: 800px;
+    /*border: 1px solid black;*/
+    margin: auto;
+    margin-top: 80px;
+    box-shadow: 15px 15px 20px black;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     align-items: center;
-    justify-content: center;
-    min-height: 90vh;
+    background-color: whitesmoke;
+}
+
+.form h2{
+    font-size: 3rem;
+    margin: 40px;
 }
 
 .box{
-    background: #fdfdfd;
-    display: flex;
-    flex-direction: column;
-    padding: 25px 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 128px 0 rgb(0,0,0,0.1),
-                0 32px 64px -48px rgb(0,0,0,0.5);
-}
-
-.form-box{
-    width: 450px;
-    margin: 0px 10px;
-}
-
-.form-box header{
-    font-size: 25px;
-    font-weight: 600;
-    text-align: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e6e6e6;
-    margin-bottom: 10px;
-}
-
-.form-box form .field{
-    display: flex;
-    margin-bottom: 10px;
-    flex-direction: column;
-}
-
-.form-box form .input input{
-    height: 40px;
-    width: 100%;
-    font-size: 16px;
-    padding: 0 10px ;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    width: 65%;
+    margin: 15px;
+    border: 1px solid black;
     outline: none;
-}
-
-.btn{
-    height: 35px;
-    background: #8f6c3e;
-    border: 0;
     border-radius: 5px;
-    color: #fff;
-    font-size: 15px;
+}
+
+#submit{
+    padding: 12px 30px;
+    width: 40%;
+    margin-top: 40px;
+    background-color: rgb(22, 113, 140);
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+
+#submit:hover{
     cursor: pointer;
-    transition: all .3s;
-    margin-top: 10px;
-    padding: 0px 10px;
+    background-color: black;
 }
 
-.btn:hover{
-    opacity: 0.82;
+.form a{
+    text-decoration: none;
+    color: black;
+    margin-top: 20px;
 }
 
-.submit{
-    width: 100%;
+.form a:hover{
+    color: rgb(22, 113, 140);
 }
 
-.links{
-    margin-bottom: 15px;
+.side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
 }
 
+.side img{
+    width: 400px;
+    height: 500px;
+}
