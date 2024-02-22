@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </form>
 
         <div class="side">
-            <img src="/Szakdolgozat/picture/school_canteen.jpg" alt="school canteen">
+            <img src="/Szakdolgozat/pictures/school_canteen.jpg" alt="school canteen">
         </div>
     </div>
 
