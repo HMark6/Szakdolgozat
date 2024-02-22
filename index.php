@@ -50,6 +50,60 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
     </div>
 </nav>
 
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Iskolai menza</h2>
+            <p>Az iskolai menza nemcsak egy hely a diákoknak, ahol étkezhetnek, hanem egy fontos közösségi tér is. Itt találkoznak barátaikkal, beszélgetnek egymással, és együtt élvezik az ízletes ételeket. Az iskolai menza kiemelt figyelmet fordít az egészséges étkezésre, biztosítva a diákoknak azokat az ételeket, amelyek szükségesek az egészséges növekedéshez és fejlődéshez.</p>
+            <p>A menü kialakításánál figyelembe veszik az egészséges táplálkozás alapelveit, és próbálnak változatos, kiegyensúlyozott ételeket kínálni, amelyek megfelelnek a különböző étkezési preferenciáknak és diétáknak is. Emellett fontosnak tartják a friss, minőségi alapanyagok felhasználását és az ételkészítés higiénés szabályainak betartását.</p>
+            <p>Az iskolai menza nemcsak az étkezésről szól, hanem egyben a diákok közösségi életének fontos része is. Itt találkoznak, megosztják egymással a mindennapi élményeiket, és lehetőségük van új barátságokat kötni. Az étkezőkön túl a menza teret ad különböző programoknak, rendezvényeknek is, amelyek tovább színesítik az iskolai életet.</p>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/Szakdolgozat/pictures/ebedlo1.jpg" alt="Iskolai menza" class="img-fluid mb-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="/Szakdolgozat/pictures/gyerekek1.jpg" alt="Iskolai menza, gyerekek" class="img-fluid mb-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="/Szakdolgozat/pictures/gyerekek2.jpg" alt="Iskolai menza, gyerekek" class="img-fluid mb-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="/Szakdolgozat/pictures/ebedlo2.jpg" alt="Iskolai menza" class="img-fluid mb-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer" class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Céginformációk</h5>
+                <p>Cég neve</p>
+                <p>Cím: 1234 Budapest, Kitalált utca 1.</p>
+                <p>Telefon: +36 1 234 5678</p>
+                <p>Email: info@cegneve.com</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Hasznos linkek</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Általános Szerződési Feltételek</a></li>
+                    <li><a href="#">Adatvédelmi irányelvek</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">© 2024 Iskolai menza</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
