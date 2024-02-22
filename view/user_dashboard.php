@@ -66,17 +66,47 @@ if (isset($_POST['logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Szakdolgozat/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
+
+<?php
+
+
+$logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+?>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/Szakdolgozat/index.php">Menü</a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Szakdolgozat/view/menu.php">Étlap</a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card mt-5">
                     <div class="card-header">
-                        Profil
+                    <p class="card-text">Üdvözöllek, <?php echo $lastname . ' ' . $firstname; ?>!</p>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Üdvözöllek, <?php echo $lastname . ' ' . $firstname; ?>!</p>
+                        
+
+                        <p>Szerkezthető adatok:</p>
                         
                         <form action="" id="profileForm" method="post">
                             <div class="form-group">
@@ -121,6 +151,10 @@ if (isset($_POST['logout'])) {
                 emailInput.classList.remove('is-invalid');
             }
         });
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </script>
 </body>
 </html>
