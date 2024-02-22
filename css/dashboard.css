@@ -1,0 +1,48 @@
+.navbar {
+    background-color: rgb(22, 113, 140) !important; 
+}
+
+
+.navbar-nav .nav-link {
+    color: #000000; 
+    font-weight: bold
+}
+
+.navbar-nav .nav-link:hover {
+    color: #808080; 
+    font-weight: bold
+}
+
+.navbar-nav .active .nav-link {
+    color: #ffffff; 
+    background-color: #000000; 
+    font-weight: bold
+}
+
+
+.table-bordered {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+
+.table-bordered th,
+.table-bordered td {
+    border: 2px solid black;
+    border-bottom: 2px solid black !important;
+}
+
+
+body {
+    background-color: whitesmoke; 
+    color: #000000; 
+}
+
+.card-header{
+    background-color: rgb(22, 113, 140);
+    border: 1px black solid;
+}
+
+.card-body{
+    border: 1px black solid;
+}
