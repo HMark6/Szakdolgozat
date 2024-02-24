@@ -2,9 +2,9 @@
 
 class DataBase {
   private static $servername = "localhost";
-  private static $username = "admin";
-  private static $password = "Lo83]lDv.g9-OlFK";
-  private static $db = "Szakdolgozat";
+  private static $username = "c31hadnagyM";
+  private static $password = "mhaGFXiqB!35";
+  private static $db = "c31hadnagyM_db";
 
   public static function getConnection() {
       $conn = new mysqli(self::$servername, self::$username, self::$password, self::$db);
