@@ -65,8 +65,9 @@ if (isset($_POST['logout'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/Szakdolgozat/css/dashboard.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 
@@ -77,18 +78,18 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/Szakdolgozat/index.php">Menü</a>
+                <a class="nav-link" href="../index.php">Menü</a>
                 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Szakdolgozat/view/menu.php">Étlap</a>
+                <a class="nav-link" href="view/menu.php">Étlap</a>
             </li>
             
         </ul>
@@ -108,13 +109,13 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
 
                         <p>Szerkezthető adatok:</p>
                         
-                        <form action="" id="profileForm" method="post">
-                            <div class="form-group">
-                                <label for="phone">Telefonszám:</label>
+                        <form action="" id="profileForm" class="row g-3" method="post">
+                            <div class="col-12">
+                                <label for="phone" class="form-label">Telefonszám:</label>
                                 <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $phone; ?>" pattern="[0-9]{2} [0-9]{3} [0-9]{4}" required>
                             </div>
-                            <div class="form-group">
-                                <label for="email">E-mail cím:</label>
+                            <div class="col-12">
+                                <label for="email" class="form-label">E-mail cím:</label>
                                 <input type="email" class="form-control" id="email" name="email" value="<?php echo $email; ?>" required>
                             </div>
                             <button type="submit" class="btn btn-primary" name="save">Mentés</button>
@@ -153,8 +154,8 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
         });
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     </script>
 </body>
 </html>
