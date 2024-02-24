@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Szakdolgozat/css/register.css" rel="stylesheet">
+    <link href="../css/register.css" rel="stylesheet">
     <title>Regisztráció</title>
 </head>
 <body>
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 
                     <input type="submit" class="btn" id="submit" name="submit" value="Regsiztrálás" required>
 
-                    <a href="\Szakdolgozat\view\login.php">Van már fiókod?</a>
+                    <a href="../view/login.php">Van már fiókod?</a>
 
                     <?php if (!empty($message)) : ?>
                 <div class="error-message"><?php echo $message; ?></div>
@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </form>
 
         <div class="side">
-            <img src="/Szakdolgozat/pictures/school_canteen.jpg" alt="school canteen">
+            <img src="../pictures/schoolCanteen.jpg" alt="school canteen">
         </div>
     </div>
 

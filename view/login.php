@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Szakdolgozat/css/login.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
     <title>Bejelentkezés</title>
 </head>
 <body>
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 
                     <input type="submit" class="btn" id="submit" name="submit" value="Bejelentkezés" required>
 
-                    <a href="\Szakdolgozat\view\register.php">Nincs még fiókod?</a>
+                    <a href="../view/register.php">Nincs még fiókod?</a>
 
                     <?php if (!empty($message)) : ?>
                         <div class="error-message"><?php echo $message; ?></div>
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </form>
 
         <div class="side">
-            <img src="/Szakdolgozat/pictures/school_canteen.jpg" alt="school canteen">
+            <img src="../pictures/schoolCanteen.jpg" alt="school canteen">
         </div>
     </div>
     
