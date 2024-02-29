@@ -62,19 +62,44 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="pictures/ebedlo1.jpg" alt="Iskolai menza" class="img-fluid mb-3">
+                    <img src="pictures/ebedlo1.jpg" alt="Iskolai menza" class="img-fluid rounded float-start mb-3">
                 </div>
                 <div class="col-md-6">
-                    <img src="pictures/gyerekek1.jpg" alt="Iskolai menza, gyerekek" class="img-fluid mb-3">
+                    <img src="pictures/gyerekek1.jpg" alt="Iskolai menza, gyerekek" class="img-fluid rounded float-start mb-3">
                 </div>
                 <div class="col-md-6">
-                    <img src="pictures/gyerekek2.jpg" alt="Iskolai menza, gyerekek" class="img-fluid mb-3">
+                    <img src="pictures/gyerekek2.jpg" alt="Iskolai menza, gyerekek" class="img-fluid rounded float-start mb-3">
                 </div>
                 <div class="col-md-6">
-                    <img src="pictures/ebedlo2.jpg" alt="Iskolai menza" class="img-fluid mb-3">
+                    <img src="pictures/ebedlo2.jpg" alt="Iskolai menza" class="img-fluid rounded float-start mb-3">
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="pictures/etel1.jpg" alt="Iskolai menza" class="img-fluid rounded float-start mb-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="pictures/etel2.jpg" alt="Iskolai menza, gyerekek" class="img-fluid rounded float-start mb-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="pictures/etel4.jpg" alt="Iskolai menza, gyerekek" class="img-fluid rounded float-start mb-3">
+                </div>
+                <div class="col-md-6">
+                    <img src="pictures/etel3.jpg" alt="Iskolai menza" class="img-fluid rounded float-start mb-3">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>Iskolai menza</h2>
+            <p>Az iskolai menzánk elkötelezett a friss és egészséges összetevők használata mellett minden ételünkben. Tudjuk, hogy a gyermekek fejlődésének és tanulmányi teljesítményének alapja a megfelelő táplálkozás. Ezért minden nap friss alapanyagokat válogatunk, hogy olyan ételeket készítsünk, amelyek gazdagok vitaminokban, ásványi anyagokban és egyéb tápanyagokban. Célunk, hogy a gyerekek ne csak jóllakjanak, hanem energikusak és egészségesek legyenek az iskolai nap során.</p>
+            <p>Az itt kínált ételek minősége és tápanyagtartalma számunkra kiemelten fontos. Minden fogásunkat úgy tervezzük meg, hogy kiegyensúlyozott tápanyagokban gazdag legyen, és segítse a gyermekek egészséges fejlődését. Az ételeinkben kizárólag olyan alapanyagokat használunk, amelyek megfelelnek a szigorú minőségi és biztonsági előírásoknak. Ezáltal biztosítjuk, hogy az iskolánkban fogyasztott ételek mindig magas minőségűek és táplálóak legyenek.</p>
+            <p>Tisztában vagyunk azzal, hogy minden gyermek más és más táplálkozási igényekkel rendelkezik. Ezért igyekszünk széles választékot kínálni étlapunkon, amely lehetővé teszi a személyre szabott választást és az egészséges étkezési szokások kialakítását. Szakácsaink és dietetikusaink közösen dolgoznak azon, hogy olyan ételeket készítsenek, amelyek egészségesek, ízletesek és változatosak. Így minden gyermek megtalálhatja az számára legmegfelelőbb ételt az iskolai menzánkban.</p>
+        </div>
+        
     </div>
 </div>
 
@@ -87,13 +112,6 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                 <p>Cím: 1234 Budapest, Kitalált utca 1.</p>
                 <p>Telefon: +36 1 234 5678</p>
                 <p>Email: info@cegneve.com</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Hasznos linkek</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#">Általános Szerződési Feltételek</a></li>
-                    <li><a href="#">Adatvédelmi irányelvek</a></li>
-                </ul>
             </div>
         </div>
         <hr>
