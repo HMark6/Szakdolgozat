@@ -50,7 +50,7 @@
 
             echo "<div class='card bg-dark text-white' mb-2>";
             echo "<div class='card-body'>";
-            echo "<p class='card-text'>Étkezés típusa: $reggeli</p>";
+            echo "<p class='card-text'>Étkezés típusa: $reggeli $ebéd $uzsonna</p>";
             echo "</div>";
             echo "</div>";
 

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menü</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="../css/menu.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -71,29 +71,62 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                     <tbody>
                         <tr>
                             <th scope="row">Reggeli</th>
-                            <td class="food-item">
-                                <a href="food.php?id=1">Tojásrántotta</a>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=1">Csokis gabonagolyó tejjel</a>
                             </td>
-                            <td class="food-item">Zabkása</td>
-                            <td class="food-item">Tejfölös palacsinta</td>
-                            <td class="food-item">Paradicsomos tojás</td>
-                            <td class="food-item">Kesudió krémmel töltött briós</td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=5">Búzakenyér löncs felvágottal zöldpaprikával és gyümölcstea</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=9">Kifli danone joghurttal</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=13">Fonott kalács tejeskávéval (instant pótkávéból)</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=17">Hagymás tojás búzakenyérrel és gyümölcsteával</a>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">Ebéd</th>
-                            <td class="food-item">Csirkepörkölt</td>
-                            <td class="food-item">Rántott hús</td>
-                            <td class="food-item">Bableves</td>
-                            <td class="food-item">Rakott karfiol</td>
-                            <td class="food-item">Csirkecomb grillezett zöldségekkel</td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=2">Rántott leves,</a>
+                                <a href="food.php?id=3">Zöldborsófőzelék főtt tojással és búzakenyérrel</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=6">Májgombócleves,</a>
+                                <a href="food.php?id=7">Mákos metélt</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=10">Vajgaluska leves,</a>
+                                <a href="food.php?id=11">Rizseshús meggy befőttel</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=14">Paradicsomleves,</a>
+                                <a href="food.php?id=15">Rakott burgonya kolbásszal</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=18">Burgonyaleves,</a>
+                                <a href="food.php?id=19">Székelykáposzta búzakenyérrel</a>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">Uzsonna</th>
-                            <td class="food-item">Gyümölcs saláta</td>
-                            <td class="food-item">Joghurt</td>
-                            <td class="food-item">Ropogós alma</td>
-                            <td class="food-item">Rakott sajtos zsemle</td>
-                            <td class="food-item">Mogyorókrém</td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=4">Görögdinnye, búzakenyér és tonhalkrémmel</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=8">Tejberizs</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=12">Búzakenyér sajtkrémmel és Ivólével(100%)</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=16">Buzakenyér margarinnal, kígyóuborkával és szilvával</a>
+                            </td>
+                            <td class="food-item my-link">
+                                <a href="food.php?id=20">Túró rudi, Szőlő fehér</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
