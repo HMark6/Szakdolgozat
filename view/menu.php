@@ -71,7 +71,9 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                     <tbody>
                         <tr>
                             <th scope="row">Reggeli</th>
-                            <td class="food-item">Tojásrántotta</td>
+                            <td class="food-item">
+                                <a href="food.php?id=1">Tojásrántotta</a>
+                            </td>
                             <td class="food-item">Zabkása</td>
                             <td class="food-item">Tejfölös palacsinta</td>
                             <td class="food-item">Paradicsomos tojás</td>
