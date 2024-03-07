@@ -9,8 +9,49 @@
 </head>
 <body>
 
+<?php
+session_start();
+
+$logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+?>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+    <a class="navbar-brand">Étel részletei</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">Menü</a>
+            </li>
+            <?php if ($logged_in) : ?>
+                <!-- Ha bejelentkezett a felhasználó -->
+                <li class="nav-item">
+                <a class="nav-link" href="user.php">Profil</a>
+                </li>
+            <?php endif; ?>
+            <!-- Ha a felhasználó be van jelentkezve, akkor a Kijelentkezés link jelenjen meg -->
+            <?php if ($logged_in) : ?>
+                <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Kijelentkezés</a>
+                </li>
+            <?php else: ?>
+                <!-- Ha a felhasználó nincs bejelentkezve, akkor megjelenítjük a Bejelentkezés/Regisztráció lehetőséget -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../view/login.php">Bejelentkezés/Regisztráció</a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </div>
+    </div>
+</nav>
+
 <div class="container mt-5">
-    <?php
+    <?php 
     // Kapcsolódás az adatbázishoz
     require('../helpers/mysql.php');
     $conn = DataBase::getConnection();
@@ -48,6 +89,27 @@
             echo "</div>";
             echo "</div>";
 
+            // Lekérdezés az ételhez tartozó allergénekről
+            $sql_allergens = "SELECT allergének.nev
+            FROM allergének
+            INNER JOIN etelek_allergenei ON allergének.allergenek_ID = etelek_allergenei.allergenek_ID
+            WHERE etelek_allergenei.etel_ID = $etel_id";
+
+            $result_allergens = $conn->query($sql_allergens);
+
+            if ($result_allergens && $result_allergens->num_rows > 0) {
+                echo "<div class='card bg-dark text-white mb-2'>";
+                echo "<div class='card-body'>";
+                echo "<p class='card-text'>Allergén csoport:</p>";
+                echo "<ul>";
+                while ($row_allergen = $result_allergens->fetch_assoc()) {
+                    echo "<li>" . $row_allergen['nev'] . "</li>";
+                }
+                echo "</ul>";
+                echo "</div>";
+                echo "</div>";
+            }
+
             echo "<div class='card bg-dark text-white' mb-2>";
             echo "<div class='card-body'>";
             echo "<p class='card-text'>Étkezés típusa: $reggeli $ebéd $uzsonna</p>";
@@ -56,7 +118,8 @@
 
             echo "</div>";
             echo "</div>";
-            // további adatok megjelenítése ...
+            
+
         } else {
             echo "<p class='text-center'>Nincs ilyen étel azonosítóval.</p>";
         }

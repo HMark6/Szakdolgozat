@@ -112,7 +112,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                         <form action="" id="profileForm" class="row g-3" method="post">
                             <div class="col-12">
                                 <label for="phone" class="form-label">Telefonszám:</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $phone; ?>" pattern="[0-9]{2} [0-9]{3} [0-9]{4}" required>
+                                <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $phone; ?>" pattern="[0-9]{2}[0-9]{3}[0-9]{4}" required>
                             </div>
                             <div class="col-12">
                                 <label for="email" class="form-label">E-mail cím:</label>

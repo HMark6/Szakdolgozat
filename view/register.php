@@ -52,14 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $sql_insert = "INSERT INTO `profil`(`vezeteknev`, `keresztnev`, `telepules_ID`, `telefonszam`, `email`, `jelszo`) 
                         VALUES ('$lastname','$firstname','$city_id','$phone','$email','$password')";
        
-        if ($conn->query($sql_insert) === TRUE) {
-            echo "Sikeres regisztráció!";
-        } else {
-            echo "Hiba a regisztráció során: " . $conn->error;
-        }
+       if ($conn->query($sql_insert) === TRUE) {
+        $message = "Sikeres regisztráció!";
     } else {
-        echo "Nem található város az adatbázisban a megadott név alapján.";
+        $message = "Hiba a regisztráció során: " . $conn->error;
     }
+} else {
+    $message = "Nem található város az adatbázisban a megadott név alapján.";
+}
 }
 }
 ?>
@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     </select>
 
                     <label for="telefonSzam">Telefonszám</label>
-                    <input type="tel" name="telefonSzam" id="telefonSzam" class="box" placeholder="20 415 9720" pattern="[0-9]{2} [0-9]{3} [0-9]{4}" required>
+                    <input type="tel" name="telefonSzam" id="telefonSzam" class="box" placeholder="204159720" pattern="[0-9]{2}[0-9]{3}[0-9]{4}" required>
 
                     <label for="email">E-mail cím</label>
                     <input type="email" name="email" id="email" class="box" required>
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     <a href="../view/login.php">Van már fiókod?</a>
 
                     <?php if (!empty($message)) : ?>
-                <div class="error-message"><?php echo $message; ?></div>
+                <div class="message"><?php echo $message; ?></div>
             <?php endif; ?>
 
         </form>
