@@ -1,0 +1,48 @@
+body{
+    background-color: whitesmoke;
+}
+
+.card {
+    margin-top: 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: rgb(22, 113, 140); /* Piros szín */
+    color: #fff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333; /* Sötétszürke szín */
+}
+
+.btn-primary {
+    background-color: #4caf50; /* Zöld szín */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #388e3c; /* Sötétebb zöld szín */
+}
+
+/* Figyelemfelhívó stílus a fizetendő összeghez */
+.form-control-static {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(22, 113, 140); /* Piros szín */
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

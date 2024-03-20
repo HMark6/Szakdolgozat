@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fizetési Felület</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/creditcard.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Fizetés</h5>
+        </div>
+        <div class="card-body">
+          <form id="payment-form" onsubmit="return validateForm()">
+
+            <div class="mb-3">
+              <label for="amount-to-pay" class="form-label">Fizetendő összeg</label>
+              <p class="form-control-static">10000 Ft</p>
+            </div>
+            <div class="mb-3 position-relative">
+              <label for="card-holder-name" class="form-label">Kártyatulajdonos Neve</label>
+              <input type="text" class="form-control" id="card-holder-name" placeholder="John Doe" required>
+              <small id="name-error" class="text-danger d-none">A név nem tartalmazhat számot.</small>
+            </div>
+            <div class="mb-3 position-relative">
+              <label for="card-number" class="form-label">Kártyaszám</label>
+              <input type="text" class="form-control" id="card-number" placeholder="1234 5678 9012 3456" required>
+              <small id="card-error" class="text-danger d-none">A kártyaszámnak 16 számjegyből kell állnia.</small>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="expiration-date" class="form-label">Lejárati dátum</label>
+                <input type="text" class="form-control" id="expiration-date" placeholder="MM/YY" required>
+                <small id="date-error" class="text-danger d-none">Helytelen dátumformátum (pl. YY/MM).</small>
+              </div>
+              <div class="col-md-6 mb-3 position-relative">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                <small id="cvv-error" class="text-danger d-none">A CVV kód 3 vagy 4 számjegyből kell állnia.</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Fizetés</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function validateForm() {
+    var name = document.getElementById("card-holder-name").value;
+    var cardNumber = document.getElementById("card-number").value;
+    var expirationDate = document.getElementById("expiration-date").value;
+    var cvv = document.getElementById("cvv").value;
+
+    var namePattern = /^[a-zA-Z\s]*$/; // csak betűket és szóközöket engedélyez
+    var cardNumberPattern = /^\d{4} \d{4} \d{4} \d{4}$/; // 16 számjegyből álló sztring
+    var expirationDatePattern = /^\d{2}\/(0[1-9]|1[0-2])$/;// MM/YY formátum
+    var cvvPattern = /^\d{3,4}$/; // 3 vagy 4 számjegyből áll
+
+    var isValid = true;
+
+    if (!namePattern.test(name)) {
+      document.getElementById("name-error").classList.remove("d-none");
+      isValid = false;
+    } else {
+      document.getElementById("name-error").classList.add("d-none");
+    }
+
+    if (!cardNumberPattern.test(cardNumber)) {
+      document.getElementById("card-error").classList.remove("d-none");
+      isValid = false;
+    } else {
+      document.getElementById("card-error").classList.add("d-none");
+    }
+
+    if (!expirationDatePattern.test(expirationDate)) {
+      document.getElementById("date-error").classList.remove("d-none");
+      isValid = false;
+    } else {
+      document.getElementById("date-error").classList.add("d-none");
+    }
+
+    if (!cvvPattern.test(cvv)) {
+      document.getElementById("cvv-error").classList.remove("d-none");
+      isValid = false;
+    } else {
+      document.getElementById("cvv-error").classList.add("d-none");
+    }
+
+    return isValid;
+  }
+</script>
+
+</body>
+</html>
