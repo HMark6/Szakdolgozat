@@ -134,6 +134,28 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
         </div>
     </div>
 </div>
+<?php if ($logged_in) : ?>
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- ID hozzáadása a gombhoz -->
+                <button id="subscriptionBtn" type="button" class="btn btn-primary w-100">Előfizetés</button>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script>
+    // Gomb kiválasztása az ID alapján
+    const subscriptionBtn = document.getElementById('subscriptionBtn');
+
+    // Gombra kattintás eseménykezelő hozzáadása
+    subscriptionBtn.addEventListener('click', function() {
+        // Átirányítás a creditcard.php oldalra
+        window.location.href = 'creditcard.php';
+    });
+</script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
