@@ -147,14 +147,14 @@ if (isset($_POST['submit'])) {
               <div class="col-md-6 mb-3">
                 <label for="expiration-date" class="form-label">Lejárati dátum</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="expiration-date" name="expiration_date" placeholder="YY/MM" required oninput="formatExpirationDate(this)">
+                  <input type="text" class="form-control" id="expiration-date" name="expiration_date" placeholder="MM/YY" required oninput="formatExpirationDate(this)">
                   <span class="input-group-text">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                       <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
                     </svg>
                   </span>
                 </div>
-                <small id="date-error" class="text-danger d-none">Helytelen dátumformátum (pl. YY/MM).</small>
+                <small id="date-error" class="text-danger d-none">Helytelen dátumformátum (pl. MM/YY).</small>
               </div>
               <div class="col-md-6 mb-3 position-relative">
                 <label for="cvv" class="form-label">CVV</label>
@@ -197,15 +197,15 @@ function formatCardNumber(input) {
 
 function formatExpirationDate(input) {
     var value = input.value.replace(/\D/g, ''); // Csak számokat engedélyezünk
-    var year = value.substring(0, 2); // Az első két számjegy a hónap
-    var month = value.substring(2, 4); // A harmadik és negyedik számjegy az év
+    var year = value.substring(2, 4); // Az első két számjegy a év
+    var month = value.substring(0, 2); // A harmadik és negyedik számjegy az hónap
 
     // Ha a hónap vagy év túl nagy, korlátozzuk azokat
     if (parseInt(year) > 99) year = '99';
     if (parseInt(month) > 12) month = '12';
     
     // Állítsuk be az input mező értékét formázva
-    input.value = year + '/' + month;
+    input.value = month + '/' + year;
 }
 
   function validateForm() {
