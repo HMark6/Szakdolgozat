@@ -13,6 +13,15 @@ $conn = DataBase::getConnection();
 //Felhasználó nevének és e-mail címének megjelenítése
 $user_id = $_SESSION['user_id'];
 
+// Ellenőrizzük, hogy van-e előfizetése a felhasználónak
+$sql_check_subscription = "SELECT COUNT(*) as count FROM elofizetes WHERE profil_ID = $user_id";
+$result_check_subscription = $conn->query($sql_check_subscription);
+$has_subscription = false;
+
+if ($result_check_subscription && $result_check_subscription->num_rows > 0) {
+    $row = $result_check_subscription->fetch_assoc();
+    $has_subscription = $row['count'] > 0; // Ha a számláló több, mint 0, akkor van előfizetése
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save'])) {
     // Ellenőrzés: Telefonszám és e-mail cím formátumának validálása
@@ -27,8 +36,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save'])) {
         $message = "Az adatok sikeresen frissültek!";
     } else {
         $message = "Hiba történt az adatok frissítése közben: " . $conn->error;
+    } 
+}elseif (isset($_POST['cancel_subscription'])) {
+     // Kilépés előfizetésből
+    // Először töröljük az előfizetéseket
+    $sql_delete_subscriptions = "DELETE FROM elofizetes WHERE profil_ID = $user_id";
+    if ($conn->query($sql_delete_subscriptions) === TRUE) {
+        // Törlés után töröljük a felesleges sorokat az elofizetett_napok táblából
+        $sql_delete_unused_subscriptions = "DELETE FROM elofizetett_napok WHERE elofizetes_ID NOT IN (SELECT elofizetes_ID FROM elofizetes)";
+        if ($conn->query($sql_delete_unused_subscriptions) === TRUE) {
+            $message = "Az előfizetés sikeresen megszűnt.";
+            $has_subscription = false;
+        } else {
+            $message = "Hiba történt az előfizetett napok törlése közben: " . $conn->error;
+        }
+    } else {
+        $message = "Hiba történt az előfizetések törlése közben: " . $conn->error;
     }
 }
+
 
 // SQL lekérdezés az adott profilhoz tartozó vezeték- és keresztnév lekérésére
 $sql = "SELECT vezeteknev, keresztnev, telefonszam, email FROM profil WHERE profil_ID = $user_id";
@@ -77,6 +103,9 @@ if (isset($_POST['logout'])) {
 $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
 ?>
 
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,7 +118,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="view/menu.php">Étlap</a>
+                <a class="nav-link" href="../view/menu.php">Étlap</a>
             </li>
             
         </ul>
@@ -120,6 +149,10 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                             </div>
                             <button type="submit" class="btn btn-primary" name="save">Mentés</button>
                             <input type="submit" name="logout" class="btn btn-danger" value="Kijelentkezés">
+                            <?php if ($has_subscription) : ?>
+                                <button type="submit" class="btn btn-danger" name="cancel_subscription">Előfizetés lemondása</button>
+                            <?php endif; ?>
+
                         </form>
                         <?php if (!empty($message)) : ?>
                             <div class="alert alert-success mt-3" role="alert">
