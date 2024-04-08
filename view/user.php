@@ -23,6 +23,53 @@ if ($result_check_subscription && $result_check_subscription->num_rows > 0) {
     $has_subscription = $row['count'] > 0; // Ha a számláló több, mint 0, akkor van előfizetése
 }
 
+
+// Ellenőrizze, hogy az előfizetés lemondására van-e kérés
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['cancel_subscription'])) {
+        // Legkorábbi étkezési dátum lekérdezése az elofizetett_napok táblából
+        $sql_min_meal_date = "SELECT MIN(etkezes_datum) AS min_meal_date FROM elofizetett_napok 
+                              WHERE elofizetes_ID IN (SELECT elofizetes_ID FROM elofizetes WHERE profil_ID = $user_id)";
+        $result_min_meal_date = $conn->query($sql_min_meal_date);
+
+        if ($result_min_meal_date && $result_min_meal_date->num_rows > 0) {
+            $row_min_meal_date = $result_min_meal_date->fetch_assoc();
+            $min_meal_date = $row_min_meal_date['min_meal_date'];
+
+
+
+            // Az aktuális dátum időbélyeg (timestamp) formában
+            $today = strtotime(date('Y-m-d'));
+
+
+            echo date('Y-m-d', $today);
+            echo $min_meal_date;
+
+            // Ellenőrizze, hogy az előfizetés lemondásának dátuma legalább egy nappal az első étkezés előtt van-e
+            if (strtotime($today) >= strtotime($min_meal_date) + (24 * 3600)) {
+                // Előfizetés lemondása
+                $cancel_date = date("Y-m-d H:i:s");
+                $sql_update_subscription = "UPDATE elofizetes SET lemondas_datum = '$cancel_date' WHERE profil_ID = $user_id";
+                if ($conn->query($sql_update_subscription) === TRUE) {
+                    $message = "Az előfizetés sikeresen lemondva!";
+                } else {
+                    $message = "Hiba történt az előfizetés lemondása közben: " . $conn->error;
+                }
+            } else {
+                // Ha az előfizetés lemondását nem lehet végrehajtani, mert az aktuális dátum nem elég késői
+                $message = "Az előfizetés lemondását csak az első étkezés dátumát megelőzően legalább egy nappal teheted meg!";
+            }
+        } else {
+            // Ha a lekérdezés nem adott eredményt
+            $message = "Nem található legkorábbi étkezési dátum!";
+        }
+    }
+}
+
+
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save'])) {
     // Ellenőrzés: Telefonszám és e-mail cím formátumának validálása
     $phone = $_POST['phone'];
@@ -37,23 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save'])) {
     } else {
         $message = "Hiba történt az adatok frissítése közben: " . $conn->error;
     } 
-}elseif (isset($_POST['cancel_subscription'])) {
-     // Kilépés előfizetésből
-    // Először töröljük az előfizetéseket
-    $sql_delete_subscriptions = "DELETE FROM elofizetes WHERE profil_ID = $user_id";
-    if ($conn->query($sql_delete_subscriptions) === TRUE) {
-        // Törlés után töröljük a felesleges sorokat az elofizetett_napok táblából
-        $sql_delete_unused_subscriptions = "DELETE FROM elofizetett_napok WHERE elofizetes_ID NOT IN (SELECT elofizetes_ID FROM elofizetes)";
-        if ($conn->query($sql_delete_unused_subscriptions) === TRUE) {
-            $message = "Az előfizetés sikeresen megszűnt.";
-            $has_subscription = false;
-        } else {
-            $message = "Hiba történt az előfizetett napok törlése közben: " . $conn->error;
-        }
-    } else {
-        $message = "Hiba történt az előfizetések törlése közben: " . $conn->error;
-    }
 }
+
+
 
 
 // SQL lekérdezés az adott profilhoz tartozó vezeték- és keresztnév lekérésére
@@ -118,7 +151,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../view/menu.php">Étlap</a>
+                <a class="nav-link" href="view/menu.php">Étlap</a>
             </li>
             
         </ul>
