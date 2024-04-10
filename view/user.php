@@ -34,19 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result_min_meal_date && $result_min_meal_date->num_rows > 0) {
             $row_min_meal_date = $result_min_meal_date->fetch_assoc();
-            $min_meal_date = $row_min_meal_date['min_meal_date'];
+            $min_meal_date = strtotime($row_min_meal_date['min_meal_date']);
 
 
 
             // Az aktuális dátum időbélyeg (timestamp) formában
-            $today = strtotime(date('Y-m-d'));
+            $today = strtotime('today');
 
 
-            echo date('Y-m-d', $today);
+            echo $today;
             echo $min_meal_date;
 
             // Ellenőrizze, hogy az előfizetés lemondásának dátuma legalább egy nappal az első étkezés előtt van-e
-            if (strtotime($today) >= strtotime($min_meal_date) + (24 * 3600)) {
+            if ($today < $min_meal_date) {
                 // Előfizetés lemondása
                 $cancel_date = date("Y-m-d H:i:s");
                 $sql_update_subscription = "UPDATE elofizetes SET lemondas_datum = '$cancel_date' WHERE profil_ID = $user_id";
@@ -108,6 +108,11 @@ if ($result && $result->num_rows > 0) {
     $firstname = "Hiba a lekérdezésnél a keresztnévben!";
     $phone = "Hiba a lekérdezésnél a telefonszámban!";
     $email = "Hiba a lekérdezésnél az e-mail címben!";
+}
+
+// Ellenőrizze, hogy az előfizetés lemondása sikeres volt-e, és frissítse a változót
+if (isset($_POST['cancel_subscription']) && !empty($message) && strpos($message, "Az előfizetés sikeresen lemondva") !== false) {
+    $has_subscription = false;
 }
 
 //Kilépés
