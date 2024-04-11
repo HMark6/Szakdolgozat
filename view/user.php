@@ -42,8 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $today = strtotime('today');
 
 
-            echo $today;
-            echo $min_meal_date;
+            
 
             // Ellenőrizze, hogy az előfizetés lemondásának dátuma legalább egy nappal az első étkezés előtt van-e
             if ($today < $min_meal_date) {
@@ -111,9 +110,17 @@ if ($result && $result->num_rows > 0) {
 }
 
 // Ellenőrizze, hogy az előfizetés lemondása sikeres volt-e, és frissítse a változót
-if (isset($_POST['cancel_subscription']) && !empty($message) && strpos($message, "Az előfizetés sikeresen lemondva") !== false) {
-    $has_subscription = false;
+// Ellenőrzze, hogy az előfizetés le van-e mondva
+$sql_check_subscription_cancelled = "SELECT lemondas_datum FROM elofizetes WHERE profil_ID = $user_id";
+$result_check_subscription_cancelled = $conn->query($sql_check_subscription_cancelled);
+$subscription_cancelled = false;
+
+if ($result_check_subscription_cancelled && $result_check_subscription_cancelled->num_rows > 0) {
+    $row_subscription_cancelled = $result_check_subscription_cancelled->fetch_assoc();
+    // Ha a lemondás dátuma nem üres, akkor az előfizetés le van mondva
+    $subscription_cancelled = !empty($row_subscription_cancelled['lemondas_datum']);
 }
+
 
 //Kilépés
 if (isset($_POST['logout'])) {
@@ -187,8 +194,9 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                             </div>
                             <button type="submit" class="btn btn-primary" name="save">Mentés</button>
                             <input type="submit" name="logout" class="btn btn-danger" value="Kijelentkezés">
-                            <?php if ($has_subscription) : ?>
+                            <?php if ($has_subscription && !$subscription_cancelled) : ?>
                                 <button type="submit" class="btn btn-danger" name="cancel_subscription">Előfizetés lemondása</button>
+                                <p>*Az előfizetést csak a hét kezdése előtt egy nappal lehet lemondani!</p>
                             <?php endif; ?>
 
                         </form>
