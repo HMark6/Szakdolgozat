@@ -90,6 +90,47 @@ if (isset($_POST['submit'])) {
         }
     }
 
+
+    
+    
+
+
+
+
+
+require('qrcode.php');
+
+
+// Base64 kódolt adat
+$qrGenerator = new QRCodeGenerator();
+
+// QR kód adatok lekérése
+$qrCodeData = $qrGenerator->getQRCodeData();
+
+// HTML listázása minden QR kódhoz
+echo '<ul>';
+foreach ($qrCodeData as $index => $data) {
+    // Base64 kódolt adat generálása
+    $base64Data = $qrGenerator->generateQRCodeBase64($data);
+
+    // PNG fájl neve
+    $file = 'decoded_image' . ($index + 1) . '.png';
+
+    // PNG fájlba mentés
+    file_put_contents($file, base64_decode(substr($base64Data, strpos($base64Data, ',') + 1)));
+
+    // Link megjelenítése minden QR kódhoz
+    echo '<li><a href="' . $file . '" target="_blank">QR code ' . ($index + 1) . '</a></li>';
+}
+echo '</ul>';
+
+    
+
+    
+    
+    
+
+    
     // Adatbázis kapcsolat bezárása
     $conn->close();
 }
@@ -176,6 +217,7 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
 </div>
+
 
 <script>
 
