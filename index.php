@@ -16,6 +16,23 @@ session_start();
 $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
 ?>
 
+<?php
+// QR kódok keresése a view mappában
+$userQRCodes = glob('view/decoded_image*.png');
+
+// Ellenőrizd, hogy vannak-e QR kódok
+$hasQRCodes = count($userQRCodes) > 0;
+
+// Ha vannak QR kódok, akkor hozz létre egy menüpontot a navbar-ban
+if ($hasQRCodes) {
+    echo '<li class="nav-item">';
+    echo '<a class="nav-link" href="../view/qrcodeview.php">QR kódjai</a>';
+    echo '</li>';
+}
+?>
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
     <a class="navbar-brand">Menü</a>
@@ -34,6 +51,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                     <a class="nav-link" href="view/user.php">Profil</a>
                 </li>
             <?php endif; ?>
+            
             <!-- Ha a felhasználó be van jelentkezve, akkor a Kijelentkezés link jelenjen meg -->
             <?php if ($logged_in) : ?>
                 <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
