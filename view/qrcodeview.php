@@ -1,26 +1,40 @@
-<?php
-// QR kódok megjelenítése
-session_start();
-if (isset($_SESSION['qrCodes']) && !empty($_SESSION['qrCodes'])) {
-    echo '<h1>QR kódok</h1>';
-    echo '<ul>';
-    foreach ($_SESSION['qrCodes'] as $index => $qrCodeData) {
-        // QR kód generálása az adatok alapján
-        $base64Data = generateQRCodeBase64($qrCodeData); // Itt a megfelelő generáló függvényt kell meghívni
-        $file = 'decoded_image' . ($index + 1) . '.png';
-        file_put_contents($file, base64_decode(substr($base64Data, strpos($base64Data, ',') + 1)));
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR kódok</title>
+</head>
+<body>
+    <h1>QR kódok</h1>
+    <ul>
+    <?php
+    // Email cím lekérése a sessionból
+    session_start();
+    $email = $_SESSION['email'];
 
-        // Link generálása a QR kódhoz
-        $qrCodePath = 'view/' . $file;
-        $link = '<a href="' . $qrCodePath . '" target="_blank">QR code ' . ($index + 1) . '</a>';
+    // Felhasználó mappájának elérési útja
+    $userFolderPath = '../view/users/user_' . $email . '/';
 
-        // Listaelem
-        echo '<li>' . $link . '</li>';
+    // Ellenőrizzük, hogy a felhasználónak vannak-e QR kódjai
+    if (file_exists($userFolderPath)) {
+        $userQRCodes = glob($userFolderPath . '*.png');
+        // Ha a felhasználónak vannak QR kódjai, listázzuk azokat
+        if (!empty($userQRCodes)) {
+            foreach ($userQRCodes as $index => $qrCode) {
+                // Az URL generálása a QR kód megjelenítéséhez
+                $qrCodeURL = $qrCode;
+                // A QR kód megjelenítése egy listaelemmel
+                echo '<li><a href="' . $qrCodeURL . '" target="_blank">QR code ' . ($index + 1) . '</a></li>';
+            }
+        } else {
+            echo '<li>Nincsenek QR kódok a felhasználó mappájában.</li>';
+        }
+    } else {
+        echo '<li>A felhasználóhoz tartozó mappa nem található.</li>';
     }
-    echo '</ul>';
-} else {
-    echo '<p>Nincsenek QR kódok.</p>';
-}
-
-?>
+    ?>
+    </ul>
+</body>
+</html>
 

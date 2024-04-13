@@ -17,17 +17,14 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
 ?>
 
 <?php
-// QR kódok keresése a view mappában
-$userQRCodes = glob('view/decoded_image*.png');
-
-// Ellenőrizd, hogy vannak-e QR kódok
-$hasQRCodes = count($userQRCodes) > 0;
-
-// Ha vannak QR kódok, akkor hozz létre egy menüpontot a navbar-ban
-if ($hasQRCodes) {
-    echo '<li class="nav-item">';
-    echo '<a class="nav-link" href="../view/qrcodeview.php">QR kódjai</a>';
-    echo '</li>';
+// Ellenőrizd, hogy a felhasználó be van-e jelentkezve
+if (isset($_SESSION['email'])) {
+    // Be van jelentkezve, tárold az email címet
+    $email = $_SESSION['email'];
+    
+    // Ellenőrizd, hogy van-e QR kód a felhasználónak
+    $userFolderPath = 'view/users/user_' . $email;
+    $hasQRCodes = file_exists($userFolderPath) && !empty(glob($userFolderPath . '/*.png'));
 }
 ?>
 
@@ -49,6 +46,13 @@ if ($hasQRCodes) {
                 <!-- Ha bejelentkezett a felhasználó -->
                 <li class="nav-item">
                     <a class="nav-link" href="view/user.php">Profil</a>
+                </li>
+            <?php endif; ?>
+
+            <?php if (isset($hasQRCodes) && $hasQRCodes) : ?>
+                <!-- Ha bejelentkezett a felhasználó -->
+                <li class="nav-item">
+                    <a class="nav-link" href="view/qrcodeview.php">QR kódjai</a>
                 </li>
             <?php endif; ?>
             
