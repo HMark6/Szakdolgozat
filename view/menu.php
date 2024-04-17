@@ -38,7 +38,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
             <?php if ($logged_in) : ?>
                 <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Kijelentkezés</a>
+                    <a class="nav-link" href="../controller/logout.php">Kijelentkezés</a>
                 </li>
             <?php else: ?>
                 <!-- Ha a felhasználó nincs bejelentkezve, akkor megjelenítjük a Bejelentkezés/Regisztráció lehetőséget -->
@@ -144,7 +144,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
         </div>
     </div>
 <?php endif; ?>
-
+<?php include '../view/footer.php'; ?>
 <script>
     // Gomb kiválasztása az ID alapján
     const subscriptionBtn = document.getElementById('subscriptionBtn');

@@ -60,7 +60,7 @@ if (isset($_SESSION['email'])) {
             <?php if ($logged_in) : ?>
                 <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
                 <li class="nav-item">
-                    <a class="nav-link" href="view/logout.php">Kijelentkezés</a>
+                    <a class="nav-link" href="controller/logout.php">Kijelentkezés</a>
                 </li>
             <?php else: ?>
                 <!-- Ha a felhasználó nincs bejelentkezve, akkor megjelenítjük a Bejelentkezés/Regisztráció lehetőséget -->
@@ -125,25 +125,8 @@ if (isset($_SESSION['email'])) {
     </div>
 </div>
 
-<footer id="footer" class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>Céginformációk</h5>
-                <p>Cég neve</p>
-                <p>Cím: 1234 Budapest, Kitalált utca 1.</p>
-                <p>Telefon: +36 1 234 5678</p>
-                <p>Email: info@cegneve.com</p>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                <p class="text-center">© 2024 Iskolai menza</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<?php include 'view/footer.php'; ?>
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
