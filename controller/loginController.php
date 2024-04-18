@@ -14,8 +14,10 @@
             $message = "Kérem, töltse ki mindkét mezőt.";
 
         }else{
+
+        $hashed_password = hash('sha256', $password);
         // Ellenőrizze az e-mail cím és a jelszó egyezését az adatbázisban
-        $sql = "SELECT * FROM `profil` WHERE `email`='$email' AND `jelszo`='$password'";
+        $sql = "SELECT * FROM `profil` WHERE `email`='$email' AND `jelszo`='$hashed_password'";
         $result = $conn->query($sql);
 
         if ($result && $result->num_rows > 0) {

@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $email = ''; // Töröljük az e-mail mező értékét
     }else{
 
+    $hashed_password = hash('sha256', $password);
     // SQL lekérdezés az adott város irányítószámának lekérdezésére
     $sql = "SELECT iranyitoszam FROM irányítószámok WHERE telepulesek='$city_name'";
     $result = $conn->query($sql);
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
         // Felhasználó hozzáadása a profil táblához
         $sql_insert = "INSERT INTO `profil`(`vezeteknev`, `keresztnev`, `telepules_ID`, `telefonszam`, `email`, `jelszo`) 
-                        VALUES ('$lastname','$firstname','$city_id','$phone','$email','$password')";
+                        VALUES ('$lastname','$firstname','$city_id','$phone','$email','$hashed_password')";
        
        if ($conn->query($sql_insert) === TRUE) {
         $message = "Sikeres regisztráció!";
