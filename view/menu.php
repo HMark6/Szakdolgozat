@@ -125,7 +125,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                                 <a href="food.php?id=16">Buzakenyér margarinnal, kígyóuborkával és szilvával</a>
                             </td>
                             <td class="food-item my-link">
-                                <a href="food.php?id=20">Túró rudi, Szőlő fehér</a>
+                                <a href="food.php?id=20">Túró rudis sütemény, Fehér szőlő</a>
                             </td>
                         </tr>
                     </tbody>

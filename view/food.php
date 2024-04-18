@@ -49,11 +49,14 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
     </div>
     </div>
 </nav>
-<?php include '../view/footer.php'; ?>
+
 <div class="container mt-5">
 <?php
 require('../controller/foodController.php');
 ?>
+</div>
+<div>
+<?php include '../view/footer.php'; ?>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
