@@ -1,7 +1,7 @@
 <?php
 require('../model/qrcode.php');
 $email = $_SESSION['email'];
-echo $email;
+
 
 
 // Függvény az adott felhasználóhoz tartozó mappa létrehozására
