@@ -93,7 +93,7 @@ echo '<div class="alert alert-success" role="alert">Az előfizetés sikeres volt
 echo '<script>
     setTimeout(function() {
         window.location.href = "../index.php";
-    }, 5000); // 5000 milliszekundum = 5 másodperc
+    }, 3000); // 3000 milliszekundum = 3 másodperc
 </script>';
 
 
