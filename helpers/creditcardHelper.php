@@ -4,7 +4,7 @@ $email = $_SESSION['email'];
 
 
 
-// Függvény az adott felhasználóhoz tartozó mappa létrehozására
+// Az adott felhasználóhoz tartozó mappa létrehozására
 function createUserFolder($email) {
   $folderPath = 'users/user_' . $email;
   if (!file_exists($folderPath)) {
@@ -29,9 +29,8 @@ function generateAndSaveQRCode($email, $qrCodeData) {
   $qrGenerator = new QRCodeGenerator();
   $base64Data = $qrGenerator->generateQRCodeBase64($qrCodeData);
   if (file_put_contents($filePath, base64_decode(substr($base64Data, strpos($base64Data, ',') + 1)))) {
-      return $fileName; // Sikeres mentés esetén visszaadjuk a fájlnevet
+      return $fileName;
   } else {
-      // Ha nem sikerült menteni a fájlt, kezeljük a hibát
       die('Nem sikerült menteni a fájlt: ' . $filePath);
   }
 }
@@ -42,13 +41,11 @@ $usersQRCodeData = array(
 
 );
 
-// Minden felhasználóhoz generálunk egyedi QR kódokat
 foreach ($usersQRCodeData as $userEmail => $qrCodeDataArray) {
   foreach ($qrCodeDataArray as $qrCodeData) {
       generateAndSaveQRCode($userEmail, $qrCodeData);
   }
 }
 
-    // Adatbázis kapcsolat bezárása
     $conn->close();
 ?>

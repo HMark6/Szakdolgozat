@@ -1,5 +1,4 @@
 <?php 
-    // Kapcsolódás az adatbázishoz
     require('../helpers/mysql.php');
     $conn = DataBase::getConnection();
 
@@ -7,13 +6,10 @@
     if(isset($_GET['id'])) {
         $etel_id = $_GET['id'];
 
-        // Lekérdezés az étel részleteiről az adatbázisból
         $sql = "SELECT * FROM etelek WHERE etel_ID = $etel_id";
         $result = $conn->query($sql);
 
-        // Ellenőrizd, hogy találtál-e eredményt
         if($result && $result->num_rows > 0) {
-            // Az étel adatainak kiolvasása
             $row = $result->fetch_assoc();
             $nev = $row['nev'];
             $osszetevok = $row['osszetevok'];
@@ -22,7 +18,6 @@
             $ebéd = $row['ebed'];
             $uzsonna = $row['uzsonna'];
 
-            // Most jöhet az adatok megjelenítése az oldalon
             echo "<h2 class='text-center'>$nev</h2>";
             echo "<div class='row g-3'>";
             echo "<div class='col-md-6'>";
@@ -36,7 +31,6 @@
             echo "</div>";
             echo "</div>";
 
-            // Lekérdezés az ételhez tartozó allergénekről
             $sql_allergens = "SELECT allergének.nev
             FROM allergének
             INNER JOIN etelek_allergenei ON allergének.allergenek_ID = etelek_allergenei.allergenek_ID

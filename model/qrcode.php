@@ -11,7 +11,7 @@ class QRCodeGenerator {
 
     private function generateQRCodeData() {
         for ($i = 1; $i <= $this->numQRCodes; $i++) {
-            // Generálj adatot minden QR kódhoz
+            // Generál adatot minden QR kódhoz
             $this->qrCodeData[] = 'QR code data ' . $i;
         }
     }
@@ -21,7 +21,6 @@ class QRCodeGenerator {
     }
 
     public function generateQRCodeBase64($data) {
-        // Create a QR code image using PHP's built-in functions
         return 'data:image/png;base64,' . base64_encode(
             file_get_contents('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' . urlencode($data))
         );

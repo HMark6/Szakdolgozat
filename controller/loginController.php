@@ -1,6 +1,6 @@
 <?php
-    session_start(); // Session kezelésének indítása
-    require('../helpers/mysql.php'); // Adatbázis kapcsolat létesítése
+    session_start();
+    require('../helpers/mysql.php');
     $conn = DataBase::getConnection();
     $message = '';
 
@@ -21,15 +21,12 @@
         $result = $conn->query($sql);
 
         if ($result && $result->num_rows > 0) {
-            // Sikeres bejelentkezés
             $row = $result->fetch_assoc();
             $_SESSION['user_id'] = $row['profil_ID'];
             $_SESSION['email'] = $row['email'];
-            // További műveletek, például átirányítás a felhasználó saját oldalára
-            header("Location: ../index.php"); // Cserélje ki erre az oldalra, amely a felhasználó vezérlőpultja
+            header("Location: ../index.php");
             exit();
         } else {
-            // Sikertelen bejelentkezés
             $message = "Hibás e-mail cím vagy jelszó.";
         }
         }

@@ -13,13 +13,12 @@
 <?php
 session_start();
 
-$logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+$logged_in = isset($_SESSION['user_id']);
 ?>
 
 <?php
 // Ellenőrizd, hogy a felhasználó be van-e jelentkezve
 if (isset($_SESSION['email'])) {
-    // Be van jelentkezve, tárold az email címet
     $email = $_SESSION['email'];
     
     // Ellenőrizd, hogy van-e QR kód a felhasználónak
@@ -43,20 +42,16 @@ if (isset($_SESSION['email'])) {
                 <a class="nav-link" href="view/menu.php">Étlap</a>
             </li>
             <?php if ($logged_in) : ?>
-                <!-- Ha bejelentkezett a felhasználó -->
                 <li class="nav-item">
                     <a class="nav-link" href="view/user.php">Profil</a>
                 </li>
             <?php endif; ?>
 
             <?php if (isset($hasQRCodes) && $hasQRCodes) : ?>
-                <!-- Ha bejelentkezett a felhasználó -->
                 <li class="nav-item">
                     <a class="nav-link" href="view/qrcodeview.php">QR kódjai</a>
                 </li>
             <?php endif; ?>
-            
-            <!-- Ha a felhasználó be van jelentkezve, akkor a Kijelentkezés link jelenjen meg -->
             <?php if ($logged_in) : ?>
                 <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
                 <li class="nav-item">

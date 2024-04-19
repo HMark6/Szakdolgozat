@@ -13,7 +13,7 @@
 <?php
 session_start();
 
-$logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+$logged_in = isset($_SESSION['user_id']);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,12 +29,10 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
                 <a class="nav-link" href="../index.php">Menü</a>
             </li>
             <?php if ($logged_in) : ?>
-                <!-- Ha bejelentkezett a felhasználó -->
                 <li class="nav-item">
                 <a class="nav-link" href="user.php">Profil</a>
                 </li>
             <?php endif; ?>
-            <!-- Ha a felhasználó be van jelentkezve, akkor a Kijelentkezés link jelenjen meg -->
             <?php if ($logged_in) : ?>
                 <!-- Ha a felhasználó be van jelentkezve, akkor megjelenítjük a Kijelentkezés lehetőséget -->
                 <li class="nav-item">
@@ -149,9 +147,7 @@ $logged_in = isset($_SESSION['user_id']); // Ellenőrizzük, hogy a felhasznál�
     // Gomb kiválasztása az ID alapján
     const subscriptionBtn = document.getElementById('subscriptionBtn');
 
-    // Gombra kattintás eseménykezelő hozzáadása
     subscriptionBtn.addEventListener('click', function() {
-        // Átirányítás a creditcard.php oldalra
         window.location.href = 'creditcard.php';
     });
 </script>

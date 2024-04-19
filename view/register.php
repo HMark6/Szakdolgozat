@@ -30,7 +30,6 @@ require('../controller/registrationController.php');
                     <select name="telepules" id="telepules" class="box" required>
                         <option value="">Válasszon települést...</option>
                         <?php
-                        // Irányítószámok táblából lekérdezés
                         $sql = "SELECT * FROM `irányítószámok` ORDER BY `irányítószámok`.`telepulesek` ASC";
                         $result = $conn->query($sql);
 

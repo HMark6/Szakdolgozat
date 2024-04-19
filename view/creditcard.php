@@ -96,7 +96,6 @@ function formatCardNumber(input) {
         value = value.match(new RegExp('.{1,4}', 'g')).join('-');
     }
 
-    // Állítsuk be az input mező értékét formázva
     input.value = value;
 }
 
@@ -109,7 +108,6 @@ function formatExpirationDate(input) {
     if (parseInt(year) > 99) year = '99';
     if (parseInt(month) > 12) month = '12';
     
-    // Állítsuk be az input mező értékét formázva
     input.value = month + '/' + year;
 }
 

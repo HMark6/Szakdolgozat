@@ -1,7 +1,7 @@
 <?php
 
-session_start(); // Session kezelésének indítása
-require('../helpers/mysql.php'); // Adatbázis kapcsolat létesítése
+session_start();
+require('../helpers/mysql.php');
 $conn = DataBase::getConnection();
 
 // Étkezési díjak lekérdezése és összegzése
@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
 }
 
 if (isset($_POST['submit'])) {
-    // Felhasználó azonosítójának lekérdezése a sessionból
+    
     $user_id = $_SESSION['user_id'];
 
     // Ellenőrizzük, hogy van-e már előfizetése a felhasználónak
@@ -27,15 +27,12 @@ if (isset($_POST['submit'])) {
         // Jelenlegi időpont lekérdezése
         $befizetes_datum = date('Y-m-d H:i:s');
 
-        // A lemondás dátuma null értéket kap
         $lemondas_datum = null;
 
-        // Lekérdezzük az étkezési dátumokat az etkezesek táblából
         $etkezes_sql = "SELECT etkezes_datum FROM etkezesek";
         $result = $conn->query($etkezes_sql);
 
         if ($result->num_rows > 0) {
-            // Ellenőrizzük az étkezési dátumokat
             $allowed_to_subscribe = true;
             while ($row = $result->fetch_assoc()) {
                 $etkezes_datum = $row['etkezes_datum'];
@@ -49,14 +46,11 @@ if (isset($_POST['submit'])) {
             }
 
             if ($allowed_to_subscribe) {
-                // Beszúrjuk az étkezési dátumokat az elofizetett_napok táblába
                 $etkezes_sql = "SELECT etkezes_datum FROM etkezesek";
                 $result = $conn->query($etkezes_sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $etkezes_datum = $row['etkezes_datum'];
-
-                        // Beszúrjuk az új sort az elofizetett_napok táblába
                         $insert_sql = "INSERT INTO elofizetett_napok (elofizetes_ID, etkezes_datum) VALUES (NULL, '$etkezes_datum')";
                         if ($conn->query($insert_sql) !== TRUE) {
                             echo "Hiba az étkezési nap hozzáadásakor: " . $conn->error;
